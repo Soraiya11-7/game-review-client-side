@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthProviderContext } from '../Provider/AuthProvider';
 
 import { FcGoogle } from 'react-icons/fc';
+import Swal from 'sweetalert2';
 
 
 
@@ -22,15 +23,46 @@ const Login = () => {
         setError("");
         // console.log(email,password);
         loginUser(email, password)
-            .then((result) => {
+            .then((res) => {
                 // console.log(result.user);
+                const lastSignInTime = res?.user?.metadata?.lastSignInTime;
+
+                const loginInfo = {email, lastSignInTime};
+
+                fetch(`http://localhost:5000/users`, {
+                    method:"PATCH",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(loginInfo)
+                   })
+                   .then(res => res.json())
+                   .then(data => {
+                    // console.log(data);
+                    // if(data.modifiedCount > 0){
+                    //     Swal.fire({
+                    //         title: 'Success!',
+                    //         text: 'Coffee Updated Successfully',
+                    //         icon: 'success',
+                    //         confirmButtonText: 'Cool'
+                    //       })
+                    // }
+                   })
+
+                
                 e.target.reset();
                 navigate(location?.state ? location.state : '/');
             })
             .catch((err) => {
                 const errorMessage = err.message;
                 const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
-                setError(errorCode || 'Unknown error');
+                setError(errorCode);
+                Swal.fire({
+                    title: 'Failed!',
+                    text: `${error}`,
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                  })
                 // setError(err.message);
             });
 
@@ -46,7 +78,13 @@ const Login = () => {
                 // setError({ ...error, login: err.code })
                 const errorMessage = err.message;
                 const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
-                setError(errorCode || 'Unknown error');
+                setError(errorCode );
+                Swal.fire({
+                    title: 'Failed!',
+                    text: `${error}`,
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                  })
 
             });
     }
@@ -69,11 +107,11 @@ const Login = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input type="password" placeholder="password" name='password' className="input input-bordered" required />
-                        {
+                        {/* {
                             error && <label className="label text-red-600 text-xs">
                                 {error}
                             </label>
-                        }
+                        } */}
 
                     </div>
                     <div className="form-control mt-6">

@@ -4,11 +4,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthProviderContext } from '../Provider/AuthProvider';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from 'react-icons/fc';
+import Swal from 'sweetalert2';
 
 
 const Registration = () => {
     const navigate = useNavigate();
-    const { createUser,  setUser, updateUserProfile,  signInWithGoogle } = useContext(AuthProviderContext);
+    const { createUser, setUser, updateUserProfile, signInWithGoogle } = useContext(AuthProviderContext);
     const location = useLocation();
     const [error, setError] = useState("");
     const [showSecretKey, setShowSecretKey] = useState(false);
@@ -32,7 +33,7 @@ const Registration = () => {
             setError("password must contain at least one  Uppercase letter");
             return;
         }
-       
+
 
         // console.log({name, email, password, image});
 
@@ -41,29 +42,57 @@ const Registration = () => {
                 // console.log(result.user);
                 console.log(image);
                 updateUserProfile({ displayName: name, photoURL: image })
-                .then(() => {
-                    setUser({
-                        ...res.user,
-                        displayName: name,
-                        photoURL: image,
-                    });
-                    console.log(res.user);
-                    navigate('/reviews');
-                })
-                .catch((err) => {
+                    .then(() => {
+                        setUser({
+                            ...res.user,
+                            displayName: name,
+                            photoURL: image,
+                        });
+                        const createdAt = res?.user?.metadata?.creationTime;
 
-                    const errorMessage = err.message;
-                    const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
-                    setError(errorCode || 'Unknown error');
-                })
-            e.target.reset();
+                        //save new user to the DB
+                        const newUser = {name, email, image, createdAt};
+                       
+                        // console.log(newUser);
+                        // data send to server
+
+                        fetch("http://localhost:5000/users", {
+                            method: "POST",
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(newUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                // console.log(data);
+                                if (data.insertedId) {
+                                    Swal.fire({
+                                        title: 'Success!',
+                                        text: 'User added Successfully',
+                                        icon: 'success',
+                                        confirmButtonText: 'Cool'
+                                    })
+                                }
+                            })
+
+
+                        navigate('/reviews');
+                    })
+                    .catch((err) => {
+
+                        const errorMessage = err.message;
+                        const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
+                        setError(errorCode || 'Unknown error');
+                    })
+                e.target.reset();
 
 
             })
             .catch((err) => {
                 const errorMessage = err.message;
                 const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
-                setError(errorCode );
+                setError(errorCode);
             });
     }
 
@@ -80,7 +109,7 @@ const Registration = () => {
             });
     }
 
-    
+
 
     return (
         <div className=" py-10 flex justify-center items-center">
