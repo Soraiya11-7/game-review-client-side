@@ -56,6 +56,7 @@ const authInfo = {
     name,
     user,
     loading,
+    setLoading,
     setUser,
     createUser,
     loginUser,

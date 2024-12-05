@@ -77,7 +77,7 @@ const Registration = () => {
                             })
 
 
-                        navigate('/reviews');
+                            navigate('/addReview');
                     })
                     .catch((err) => {
 

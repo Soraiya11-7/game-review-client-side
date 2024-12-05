@@ -1,60 +1,85 @@
-import { Link, NavLink, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 // import { RiCoupon3Fill } from "react-icons/ri";
 import logo from "../assets/gamer.jpg"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthProviderContext } from "../Provider/AuthProvider";
 
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthProviderContext);
     console.log(user);
+    const location = useLocation();
+    const [showTooltip, setShowTooltip] = useState(false);
     // const location = useLoaderData();
     const navigate = useNavigate();
 
     const links = <>
 
-        <li><NavLink to='/' 
-             className={({ isActive }) =>
-            `flex items-center gap-0  ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
-        }>Home</NavLink></li>
+        <li><NavLink to='/'
+            className={({ isActive }) =>
+                `flex items-center gap-x-1  ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
+            }>Home</NavLink></li>
         <li><NavLink className={({ isActive }) =>
-            `flex items-center gap-0  ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
+            `flex items-center gap-x-0.5  ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
         } to='/reviews'>All Reviews</NavLink></li>
 
         {
-            user && <>
-                <li> <NavLink className={({ isActive }) =>
-                    `flex items-center gap-0 ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
-                } to='/addReview'>Add Review</NavLink></li>
-            </>
+           user ? ( 
+                <li>
+                    <NavLink
+                        className={({ isActive }) =>
+                            `flex items-center ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
+                        }
+                        to='/addReview'
+                    >
+                        Add Review
+                    </NavLink>
+                </li>
+           )
+            : (
+                <li>
+                    <NavLink
+                        className={({ isActive }) =>
+                            `flex items-center  text-[#0B0B0BB3] bg-transparent`
+                        }
+                        
+                        //  onClick={() => navigate("/auth/login", { state:  '/addReview' })}
+                        state = {'/addReview'}
+                        to='/auth/login'
+                      
+                    >
+                        Add Review
+                    </NavLink>
+                </li>
+            )
         }
-         {
+        {
             user && <>
                 <li> <NavLink className={({ isActive }) =>
                     `flex items-center gap-0 ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
                 } to='/myReviews'>My Reviews</NavLink></li>
             </>
         }
-         {
+        {
             user && <>
                 <li> <NavLink className={({ isActive }) =>
                     `flex items-center gap-0 ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
                 } to='/myWatchlist'> Game WatchList</NavLink></li>
             </>
         }
-       
+
 
     </>
 
-const handleLogOut = () => {
-  signOutUser()
-  .then(() => {
-    navigate('/')
-  })
-  .catch((err) =>{
-   const error = err.message;
-  })
-}
+    const handleLogOut = () => {
+        signOutUser()
+            .then(() => {
+                navigate('/')
+            })
+            .catch((err) => {
+                const error = err.message;
+            })
+    }
     return (
         <div className="navbar bg-gray-300 w-[80%] mx-auto p-2 md:p-4 ">
             <div className="navbar-start">
@@ -83,20 +108,27 @@ const handleLogOut = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 -space-x-1">
-                 {links}
+                    {links}
 
                 </ul>
             </div>
             <div className="navbar-end flex  items-center gap-0.5 md:gap-2">
                 <div className=" flex flex-col items-center">
                     {
-                        user && user?.email ?
+                        user ?
                             <div className="flex items-center">
-                                <h2 className="text-sm md:mr-0.5 font-bold hidden md:block ">{user?.email}</h2>
-                                <div className="h-10 w-12 md:h-12 md:w-14 rounded-full px-1  ">
-                                <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={user?.photoURL} alt="" />
+                                <div className="h-10 w-12 md:h-12 md:w-14 rounded-full px-1 relative"  onMouseEnter={() => setShowTooltip(true)}
+                                        onMouseLeave={() => setShowTooltip(false)}>
+                                    <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={user?.photoURL}
+                                        alt="Avatar image"
+                                        />
                                 </div>
-                                
+                                {showTooltip && (
+                                    <div className="absolute mr-4 top-16 text-sm text-teal-800 bg-white p-2 rounded-lg border ">
+                                        {user?.displayName}
+                                    </div>
+                                )}
+
                             </div>
                             :
 
@@ -114,7 +146,7 @@ const handleLogOut = () => {
                 </div>
 
             </div>
-          
+
         </div>
     );
 };

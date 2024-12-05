@@ -5,6 +5,8 @@ import AuthLayout from "../Layout/AuthLayout";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import SecretRoutes from "./SecretRoutes";
+import AddReview from "../pages/AddReview";
+
 
 const router = createBrowserRouter([
     {
@@ -19,13 +21,13 @@ const router = createBrowserRouter([
         },
         {
           path: "/addReview",
-          element:  <SecretRoutes><h2>add Reviews</h2></SecretRoutes>,
+          element: <AddReview></AddReview>,
           
         },
         
         {
           path: "/reviews",
-          element: <h2>reviews</h2>,
+          element: <h2>all reviews</h2>,
         },
         {
           path: "/myReviews",

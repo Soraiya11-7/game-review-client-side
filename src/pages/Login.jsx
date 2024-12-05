@@ -13,6 +13,8 @@ const Login = () => {
     const { signInWithGoogle, loginUser, setMail } = useContext(AuthProviderContext);
     const [error, setError] = useState("");
     const location = useLocation();
+    const from = location.state;
+    console.log(from);
 
     //Login with email, password
     const handleLogin = (e) => {
