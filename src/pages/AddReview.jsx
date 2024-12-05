@@ -61,7 +61,7 @@ const AddReview = () => {
     return (
         <div className=" py-12 w-[80%] mx-auto">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3">Add a New Review</h2>
-            <h3  className='text-sm sm:text-lg  text-center mb-10'> Submit detailed reviews for your favorite games effortlessly</h3>
+            <h3 className='text-sm sm:text-lg  text-center mb-10'> Submit detailed reviews for your favorite games effortlessly</h3>
             <form onSubmit={handleSubmit} className='bg-slate-300 py-10 px-6 shadow-lg rounded-xl' >
                 {/* form name and Game Cover Image/Thumbnail */}
                 <div className=" md:flex mb-4 md:mb-8">
@@ -136,7 +136,8 @@ const AddReview = () => {
                         <label className="label">
                             <span className="label-text">Rating (1-5)</span>
                         </label>
-                        <input type="text" name="rating" placeholder="Rating" className="input input-bordered w-full text-xs sm:text-base" required />
+                        <input type="number" name="rating" placeholder="Rating" className="input input-bordered w-full text-xs sm:text-base" min="1"
+                            max="5" required />
                     </div>
                     <div className="form-control md:w-1/2 md:ml-4">
                         <label className="label">

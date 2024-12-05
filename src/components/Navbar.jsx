@@ -43,7 +43,6 @@ const Navbar = () => {
                             `flex items-center  text-[#0B0B0BB3] bg-transparent`
                         }
                         
-                        //  onClick={() => navigate("/auth/login", { state:  '/addReview' })}
                         state = {'/addReview'}
                         to='/auth/login'
                       
@@ -104,7 +103,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <div className=" w-14 h-10 md:w-20 md:h-14"><img className="w-full h-full overflow-hidden rounded-xl object-cover" src={logo} alt="" /></div>
+                <div className="avatar w-14 h-10 md:w-20 md:h-14"><img className="w-full h-full overflow-hidden rounded-xl object-cover" src={logo} alt="" /></div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 -space-x-1">
