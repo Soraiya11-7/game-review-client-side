@@ -29,7 +29,7 @@ const AllReviews = () => {
     }, [ sortBy,allReviews,selectedGenre]);
     const genres = [...new Set(allReviews.map(review => review.genre))];
 
-
+    
     return (
         <div className='w-[80%] mx-auto'>
             <div className="py-10  bg-gray-50">

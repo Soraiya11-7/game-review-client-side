@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 
 const Card = ({ review, reviews, setReviews }) => {
     const { _id,gameTitle, rating, publishingYear, genre, details, coverImage, userEmail, userName } = review;
-    console.log(details);
+    console.log(_id);
     return (
         <div className="w-full mx-auto flex justify-center items-center">
             <div className="shadow-xl w-full h-full rounded-lg bg-white overflow-hidden">
                 {/* Header */}
                 <div className="bg-purple-400 px-4 pt-8 text-center w-full">
-                    <div  className="h-48 w-[90%] mx-auto shadow-xl rounded-t-lg ">
+                    <div  className="h-52 w-[90%] mx-auto shadow-xl rounded-t-lg ">
                         <img src={coverImage} className="h-full w-full object-cover overflow-hidden rounded-t-lg" alt="coverImage" />
 
                     </div>
@@ -33,7 +33,7 @@ const Card = ({ review, reviews, setReviews }) => {
                         </div>
 
                         {/* Quote */}
-                        <div className="mt-5 flex flex-col flex-grow h-min-h-[200px] ">
+                        <div className="mt-2 flex flex-col flex-grow h-min-h-[200px] ">
                             <p className="text-sm font-semibold text-gray-800 mb-4">{userName}</p>
                             <p className="text-gray-600 italic text-sm flex-grow">
                                 <span>"{details}"</span>
