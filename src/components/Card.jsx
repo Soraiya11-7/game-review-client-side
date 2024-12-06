@@ -1,9 +1,10 @@
 
 import React from "react";
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Card = ({ review, reviews, setReviews }) => {
-    const { gameTitle, rating, publishingYear, genre, details, coverImage, userEmail, userName } = review;
+    const { _id,gameTitle, rating, publishingYear, genre, details, coverImage, userEmail, userName } = review;
     console.log(details);
     return (
         <div className="w-full mx-auto flex justify-center items-center">
@@ -18,7 +19,7 @@ const Card = ({ review, reviews, setReviews }) => {
 
                 <div className=" bg-white px-4 py-8 text-center w-full">
                     {/* Card Content */}
-                    <div className="relative bg-white p-8 w-[90%] text-center mx-auto shadow-xl rounded-b-lg min-h-[250px] flex flex-col ">
+                    <div className="relative bg-white p-8 w-[90%] text-center mx-auto shadow-xl rounded-b-lg min-h-[350px] flex flex-col flex-grow ">
                         {/* Profile Image */}
                         <div className="absolute -top-20 left-1/2 transform -translate-x-1/2">
                             <div className="avatar">
@@ -32,16 +33,17 @@ const Card = ({ review, reviews, setReviews }) => {
                         </div>
 
                         {/* Quote */}
-                        <div className="mt-1 flex-flex-col flex-grow h-full">
+                        <div className="mt-5 flex flex-col flex-grow h-min-h-[200px] ">
                             <p className="text-sm font-semibold text-gray-800 mb-4">{userName}</p>
                             <p className="text-gray-600 italic text-sm flex-grow">
-                                <span>"</span>{details}<span>"</span>
+                                <span>"{details}"</span>
                             </p>
 
 
-                            <div className="bg-white px-4 text-center border-t border-gray-300  mt-4 flex flex-col ">
+                            <div className="bg-white px-4 text-center border-t border-gray-300  mt-4 flex flex-col min-h-[100px] flex-grow ">
                                 <h3 className="text-lg font-semibold flex-grow">{gameTitle}</h3>
                                 <p className="text-sm text-gray-500 uppercase">{genre}</p>
+                                <h2 className="text-sm text-gray-500 uppercase"> <span>{publishingYear}</span></h2>
                                 {/* Star Ratings */}
 
                                 <div className="flex justify-center items-center mt-2 ">
@@ -55,11 +57,17 @@ const Card = ({ review, reviews, setReviews }) => {
                                         </span>
                                     ))}
                                 </div>
+                                <Link to={`/review/${_id}`}>
+                                <button className="btn bg-purple-500 mt-3">Explore Details</button>
+                           </Link>
+                                
 
 
                             </div>
                         </div>
                     </div>
+
+                   
                 </div>
 
 

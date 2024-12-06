@@ -7,6 +7,8 @@ import Registration from "../pages/Registration";
 import SecretRoutes from "./SecretRoutes";
 import AddReview from "../pages/AddReview";
 import AllReviews from "../pages/AllReviews";
+import Home from "../pages/Home";
+import ReviewDetails from "../pages/ReviewDetails";
 
 
 const router = createBrowserRouter([
@@ -17,7 +19,8 @@ const router = createBrowserRouter([
       children: [
         {
           path: "/",
-          element: <h2>Hello</h2>,
+          element: <Home></Home>,
+          loader: () => fetch("http://localhost:5000/reviews/rated"),
           
         },
         {
@@ -34,6 +37,11 @@ const router = createBrowserRouter([
         {
           path: "/myReviews",
           element: <SecretRoutes><h2>myReviews</h2></SecretRoutes> ,
+        },
+        {
+          path: "/review/:id",
+          element: <SecretRoutes><ReviewDetails></ReviewDetails></SecretRoutes> ,
+          loader: ({params}) => fetch(`http://localhost:5000/reviews/${params.id}`)
         },
         {
           path: "/myWatchlist",
