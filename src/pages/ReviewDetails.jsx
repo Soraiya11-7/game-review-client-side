@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthProviderContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const ReviewDetails = () => {
     const review = useLoaderData();
+    const {user} = useContext(AuthProviderContext)
     const {
         gameTitle,
         rating,
@@ -10,13 +13,48 @@ const ReviewDetails = () => {
         genre,
         details,
         coverImage,
-        userEmail,
-        userName,
+        reviewerEmail,
+        reviewerName,
     } = review;
 
+
+    //current logged in users info
+    const [email, setUserEmail] = useState(user?.email || '');
+    const [name, setUserName] = useState(user?.displayName || '');
+   
+
+
+    useEffect(() => {
+        if (user) {
+            setUserEmail(user.email);
+            setUserName(user.displayName);
+        }
+    }, [user]);
+
     const handleAddToWatchList = () => {
-        console.log(`Added to WatchList: ${gameTitle}`);
-        // Add WatchList logic here
+        const newWatchList = { gameTitle, rating, publishingYear, genre, details, coverImage, reviewerEmail, reviewerName, email,name };
+
+        console.log(newWatchList);
+
+        fetch("http://localhost:5000/watchlist", {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newWatchList)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Review added on watchList Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
     };
 
     return (
@@ -78,8 +116,8 @@ const ReviewDetails = () => {
 
                         </div>
                         <div className='text-right'>
-                                <p className="font-semibold text-sm md:text-lg">{userName}</p>
-                                <p className="text-gray-600 text-xs md:text-lg">{userEmail}</p>
+                                <p className="font-semibold text-sm md:text-lg">{reviewerName}</p>
+                                <p className="text-gray-600 text-xs md:text-lg">{reviewerEmail}</p>
                             </div>
 
                         {/* Add to WatchList Button */}

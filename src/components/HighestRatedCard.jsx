@@ -9,7 +9,7 @@ const HighestRatedCard = ({reviews, setReviews}) => {
                     {
                         reviews.map((review) => (
                             <Card key={review._id}
-                                review={review} reviews={reviews} setReviews={setReviews}></Card>)
+                                review={review}></Card>)
                         )
                     }
                 </div>

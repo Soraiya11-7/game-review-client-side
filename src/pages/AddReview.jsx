@@ -7,15 +7,15 @@ import Swal from 'sweetalert2';
 const AddReview = () => {
     const { user, setLoading } = useContext(AuthProviderContext);
 
-    const [userEmail, setUserEmail] = useState(user?.email || '');
-    const [userName, setUserName] = useState(user?.displayName || '');
+    const [reviewerEmail, setReviewerEmail] = useState(user?.email || '');
+    const [reviewerName, setReviewerName] = useState(user?.displayName || '');
     const [userLogo, setUserLogo] = useState(user?.photoURL || '');
 
 
     useEffect(() => {
         if (user) {
-            setUserEmail(user.email);
-            setUserName(user.displayName);
+            setReviewerEmail(user.email);
+            setReviewerName(user.displayName);
             setUserLogo(user.photoURL);
         }
     }, [user]);
@@ -31,7 +31,7 @@ const AddReview = () => {
         const details = form.details.value;
         const coverImage = form.coverImage.value;
 
-        const newReview = { gameTitle, rating, publishingYear, genre, details, coverImage, userEmail, userName, userLogo };
+        const newReview = { gameTitle, rating, publishingYear, genre, details, coverImage, reviewerEmail, reviewerName, userLogo };
 
         console.log(newReview);
 

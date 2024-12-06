@@ -3,8 +3,8 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Card = ({ review, reviews, setReviews }) => {
-    const { _id,gameTitle, rating, publishingYear, genre, details, coverImage, userEmail, userName } = review;
+const Card = ({ review}) => {
+    const { _id,gameTitle, rating, publishingYear, genre, details, coverImage, reviewerName } = review;
     console.log(_id);
     return (
         <div className="w-full mx-auto flex justify-center items-center">
@@ -34,7 +34,7 @@ const Card = ({ review, reviews, setReviews }) => {
 
                         {/* Quote */}
                         <div className="mt-2 flex flex-col flex-grow h-min-h-[200px] ">
-                            <p className="text-sm font-semibold text-gray-800 mb-4">{userName}</p>
+                            <p className="text-sm font-semibold text-gray-800 mb-4">{reviewerName}</p>
                             <p className="text-gray-600 italic text-sm flex-grow">
                                 <span>"{details}"</span>
                             </p>

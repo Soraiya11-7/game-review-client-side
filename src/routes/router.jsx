@@ -9,6 +9,7 @@ import AddReview from "../pages/AddReview";
 import AllReviews from "../pages/AllReviews";
 import Home from "../pages/Home";
 import ReviewDetails from "../pages/ReviewDetails";
+import GameWatchlist from "../pages/GameWatchlist";
 
 
 const router = createBrowserRouter([
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
         },
         {
           path: "/myWatchlist",
-          element: <SecretRoutes><h2>Watchlist</h2></SecretRoutes>,
+          element: <SecretRoutes><GameWatchlist></GameWatchlist></SecretRoutes>,
         },
         {
           path: "auth",
