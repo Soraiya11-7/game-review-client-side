@@ -116,7 +116,7 @@ const AddReview = () => {
                         <label className="label">
                             <span className="label-text">User Name</span>
                         </label>
-                        <input type="text" placeholder="Category" className="input input-bordered w-full text-xs sm:text-base" value={userName}
+                        <input type="text" placeholder="Category" className="input input-bordered w-full text-xs sm:text-base" value={reviewerName}
                             readOnly />
                     </div>
                     <div className="form-control md:w-1/2 md:ml-4">
@@ -124,7 +124,7 @@ const AddReview = () => {
                             <span className="label-text">User Email</span>
                         </label>
                         <input type="email"
-                            value={userEmail}
+                            value={reviewerEmail}
                             placeholder="Enter Your Detailed Review" className="input input-bordered w-full text-xs sm:text-base" readOnly />
                     </div>
 

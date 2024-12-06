@@ -15,6 +15,7 @@ const ReviewDetails = () => {
         coverImage,
         reviewerEmail,
         reviewerName,
+        userLogo
     } = review;
 
 
@@ -59,7 +60,7 @@ const ReviewDetails = () => {
 
     return (
         <div className='w-[80%] mx-auto'>
-            <div className=" bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 py-10 px-4 md:px-12">
+            <div className=" bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-700 py-10">
                 {/* Page Title */}
                 <div className="text-center text-white mb-12">
                     <h1 className="text-2xl md:text-4xl font-bold">Review Details</h1>
@@ -67,16 +68,16 @@ const ReviewDetails = () => {
                 </div>
 
                 {/* Review Card */}
-                <div className="w-full md:w-[80%] lg:w-[60%] mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <div className="w-full sm:w-[70%] md:w-[60%] lg:w-[45%] mx-auto bg-white rounded-lg shadow-lg overflow-hidden ">
 
-                    <div className="h-auto w-full mx-auto shadow-xl rounded-t-lg ">
-                        <img src={coverImage} className="h-full w-full object-cover overflow-hidden rounded-t-lg" alt="coverImage" />
+                    <div className="h-[250px] sm:h-[300px] md:h-[400px] w-full mx-auto shadow-xl rounded-t-lg mb-4 p-4">
+                        <img src={coverImage} className="h-full w-full object-cover overflow-hidden rounded-lg " alt="coverImage" />
 
                     </div>
 
 
                     {/* Review Information.................................. */}
-                    <div className="p-6">
+                    <div className="p-3">
                         {/* Game Title & Rating */}
                         <div className="md:flex justify-between mb-2">
                             <h2 className="text-base sm:text-xl lg:text-2xl font-bold text-gray-800  mb-2 md:mb-0">{gameTitle}</h2>
@@ -86,7 +87,7 @@ const ReviewDetails = () => {
                         </div>
 
                         {/* Publishing Year & Genre */}
-                        <div className="md:flex justify-between mb-6">
+                        <div className="md:flex justify-between mb-4">
                             <p className="text-gray-600 text-sm md:text-lg mb-2 md:mb-0">
                                 <span className="font-semibold">Published in:</span> {publishingYear}
                             </p>
@@ -98,30 +99,27 @@ const ReviewDetails = () => {
                        <hr/>
 
                         {/* Reviewer Info */}
-                        {/* <div className="flex items-center gap-4 mb-2 mt-6">
+                        <div className="flex items-center gap-2 mb-3 mt-2">
                             <img
-                                src="https://i.ibb.co.com/HKw5bSk/istockphoto-1209654046-612x612.jpg"
+                                src={userLogo}
                                 alt="User Avatar"
-                                className="w-16 h-16 rounded-full border-2 border-gray-300"
+                                className="w-8 md:w-12 h-8 md:h-12 rounded-full border "
                             />
-                            <div>
-                                <p className="font-semibold text-lg">{userName}</p>
-                                <p className="text-gray-600">{userEmail}</p>
+                            <div className='text-left'>
+                                <p className="font-semibold text-sm md:text-lg">{reviewerName}</p>
+                                <p className="text-gray-600 text-xs md:text-base">{reviewerEmail}</p>
                             </div>
-                        </div> */}
+                        </div>
 
                          {/* Review Description */}
                         <div className="text-gray-700 font-semibold mb-6">
                             <span className="text-xs sm:text-sm md:text-lg font-normal">"{details}"</span>
 
                         </div>
-                        <div className='text-right'>
-                                <p className="font-semibold text-sm md:text-lg">{reviewerName}</p>
-                                <p className="text-gray-600 text-xs md:text-lg">{reviewerEmail}</p>
-                            </div>
+                      
 
                         {/* Add to WatchList Button */}
-                        <div className="flex justify-center mt-10">
+                        <div className="flex justify-center ">
                             <button
                                 onClick={handleAddToWatchList}
                                 className="bg-gradient-to-r from-purple-500 to-blue-500 text-white  text-xs sm:text-sm md:text-base font-bold py-2 px-6 rounded-lg shadow-md hover:from-blue-500 hover:to-green-400 transition-all duration-300"
