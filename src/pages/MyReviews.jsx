@@ -2,10 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthProviderContext } from "../Provider/AuthProvider";
 import { AiFillDelete } from "react-icons/ai"; // Importing a delete icon from react-icons
 import Swal from "sweetalert2";
+import { FaEdit } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const MyReviews = () => {
   const [myReviews, setMyReviews] = useState([]);
-  const { user } = useContext(AuthProviderContext); 
+  const { user } = useContext(AuthProviderContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user?.email) {
@@ -18,33 +21,33 @@ const MyReviews = () => {
 
   const handleDelete = (_id) => {
     Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-            fetch(`http://localhost:5000/review/${_id}`,{
-                method: 'DELETE'
-            })
-            .then(res => res.json())
-            .then(data =>{
-                // console.log(data);
-                if(data.deletedCount > 0){
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your review has been deleted.",
-                        icon: "success"
-                      });
-                      const remaining = myReviews.filter(review => review._id !== _id);
-                      setMyReviews(remaining);
-                }
-            })    
-        }
-      });
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/review/${_id}`, {
+          method: 'DELETE'
+        })
+          .then(res => res.json())
+          .then(data => {
+            // console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your review has been deleted.",
+                icon: "success"
+              });
+              const remaining = myReviews.filter(review => review._id !== _id);
+              setMyReviews(remaining);
+            }
+          })
+      }
+    });
   };
 
   return (
@@ -75,12 +78,21 @@ const MyReviews = () => {
                   <td className="border border-purple-500  py-2 text-xs sm:text-sm md:text-base  ">{review.genre} </td>
                   <td className="border border-purple-500  py-2 text-xs sm:text-sm md:text-base" >{review.details}</td>
                   <td className="border border-purple-500 py-2 text-xs sm:text-sm md:text-base  ">
-                    <button
-                      onClick={() => handleDelete(review._id)}
-                      className=" text-center text-red-600 rounded-full transition-all duration-300"
-                    >
-                      <AiFillDelete className="text-center" size={20} />
-                    </button>
+                    <div className="flex justify-center items-center gap-2 md:gap-4">
+                      <button
+                        onClick={() => handleDelete(review._id)}
+                        className=" text-center text-red-600 rounded-full transition-all duration-300 "
+                      >
+                        <AiFillDelete className="text-center" size={20} />
+                        
+                      </button>
+                      <button
+                        onClick={() => navigate(`/updateReview/${review._id}`)}
+                        className="text-center text-orange-950 rounded-full "
+                      >
+                        <FaEdit className="text-lg" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

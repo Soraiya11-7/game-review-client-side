@@ -3,6 +3,7 @@ import { Link, NavLink, useLoaderData, useLocation, useNavigate } from "react-ro
 import logo from "../assets/gamer.jpg"
 import { useContext, useState } from "react";
 import { AuthProviderContext } from "../Provider/AuthProvider";
+import { Tooltip } from "react-tooltip";
 
 
 const Navbar = () => {
@@ -24,7 +25,7 @@ const Navbar = () => {
         } to='/reviews'>All Reviews</NavLink></li>
 
         {
-           user ? ( 
+            user ? (
                 <li>
                     <NavLink
                         className={({ isActive }) =>
@@ -35,22 +36,22 @@ const Navbar = () => {
                         Add Review
                     </NavLink>
                 </li>
-           )
-            : (
-                <li>
-                    <NavLink
-                        className={({ isActive }) =>
-                            `flex items-center  text-[#0B0B0BB3] bg-transparent`
-                        }
-                        
-                        state = {'/addReview'}
-                        to='/auth/login'
-                      
-                    >
-                        Add Review
-                    </NavLink>
-                </li>
             )
+                : (
+                    <li>
+                        <NavLink
+                            className={({ isActive }) =>
+                                `flex items-center  text-[#0B0B0BB3] bg-transparent`
+                            }
+
+                            state={'/addReview'}
+                            to='/auth/login'
+
+                        >
+                            Add Review
+                        </NavLink>
+                    </li>
+                )
         }
         {
             user && <>
@@ -116,17 +117,21 @@ const Navbar = () => {
                     {
                         user ?
                             <div className="flex items-center">
-                                <div className="h-10 w-12 md:h-12 md:w-14 rounded-full px-1 relative"  onMouseEnter={() => setShowTooltip(true)}
-                                        onMouseLeave={() => setShowTooltip(false)}>
+                                <div className="h-10 w-12 md:h-12 md:w-14 rounded-full px-1 relative" id='click' onMouseEnter={() => setShowTooltip(true)}
+                                    onMouseLeave={() => setShowTooltip(false)}>
                                     <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={user?.photoURL}
                                         alt="Avatar image"
-                                        />
+                                    />
+                                    <Tooltip anchorSelect="#click" clickable>
+                                        <button> {user?.displayName}</button>
+                                    </Tooltip>
+
                                 </div>
-                                {showTooltip && (
+                                {/* {showTooltip && (
                                     <div className="absolute mr-4 top-16 text-sm text-teal-800 bg-white p-2 rounded-lg border ">
                                         {user?.displayName}
                                     </div>
-                                )}
+                                )} */}
 
                             </div>
                             :
