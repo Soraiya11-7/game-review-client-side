@@ -10,14 +10,14 @@ const Card = ({ review}) => {
         <div className="w-full mx-auto flex justify-center items-center">
             <div className="shadow-xl w-full h-full rounded-lg bg-white overflow-hidden">
                 {/* Header */}
-                <div className="bg-purple-400 px-4 pt-8 text-center w-full">
+                <div className="bg-purple-400 px-1 pt-4 text-center w-full">
                     <div  className="h-52 w-[90%] mx-auto shadow-xl rounded-t-lg ">
                         <img src={coverImage} className="h-full w-full object-cover overflow-hidden rounded-t-lg" alt="coverImage" />
 
                     </div>
                 </div>
 
-                <div className=" bg-white px-4 py-8 text-center w-full">
+                <div className=" bg-white px-1 py-4 text-center w-full">
                     {/* Card Content */}
                     <div className="relative bg-white p-8 w-[90%] text-center mx-auto shadow-xl rounded-b-lg min-h-[350px] flex flex-col flex-grow ">
                         {/* Profile Image */}

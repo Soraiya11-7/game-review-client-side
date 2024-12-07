@@ -113,7 +113,7 @@ const ReviewDetails = () => {
 
                          {/* Review Description */}
                         <div className="text-gray-700 font-semibold mb-6">
-                            <span className="text-xs sm:text-sm md:text-lg font-normal">"{details}"</span>
+                            <span className="text-xs md:text-base font-normal">"{details}"</span>
 
                         </div>
                       
