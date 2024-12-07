@@ -4,29 +4,39 @@ import Card from '../components/Card';
 
 const AllReviews = () => {
     const allReviews = useLoaderData();
-    const [reviews, setReviews] = useState([]);
+    console.log(allReviews);
+    const [reviews, setReviews] = useState(allReviews);
     const [sortBy, setSortBy] = useState('');
-    const [selectedGenre, setSelectedGenre] = useState('all'); // Default: no genre filter
+    const [selectedGenre, setSelectedGenre] = useState('all'); 
 
     useEffect(() => {
     
         let sortedReviews = [...allReviews];
+
         // Filter reviews based on selected genre
         if (selectedGenre !== 'all') {
             sortedReviews = sortedReviews.filter(review => review.genre.toLowerCase() === selectedGenre.toLowerCase());
         }
-         
-        if (sortBy === 'rating') {
-            
-            sortedReviews.sort((a, b) => a.rating - b.rating);
-        } else if (sortBy === 'year') {
-            // const yearA = parseInt(a.publishingYear, 10);
-            //     const yearB = parseInt(b.publishingYear, 10);
-            // Sort by publishingYear in descending order (convert to integers)
-            sortedReviews.sort((a, b) => parseInt(b.publishingYear) - parseInt(a.publishingYear));
+
+        //rating and year sorting..................
+        const fetchSortedReviews = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/reviews?sortBy=${sortBy}`);
+                const sortReviews = await response.json();
+                setReviews(sortReviews);
+            } catch (error) {
+                console.error('Error fetching sorted reviews:', error);
+            }
+        };
+
+        if (sortBy) {
+            fetchSortedReviews();
+        } else {
+            setReviews(allReviews); 
         }
-        setReviews(sortedReviews);
+      
     }, [ sortBy,allReviews,selectedGenre]);
+
     const genres = [...new Set(allReviews.map(review => review.genre))];
 
     
