@@ -8,7 +8,7 @@ import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthProviderContext);
-    console.log(user);
+   
     const location = useLocation();
     const [showTooltip, setShowTooltip] = useState(false);
     // const location = useLoaderData();

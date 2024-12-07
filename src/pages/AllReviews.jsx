@@ -4,7 +4,6 @@ import Card from '../components/Card';
 
 const AllReviews = () => {
     const allReviews = useLoaderData();
-    console.log(allReviews);
     const [reviews, setReviews] = useState(allReviews);
     const [sortBy, setSortBy] = useState('');
     const [selectedGenre, setSelectedGenre] = useState('all'); 
@@ -15,26 +14,32 @@ const AllReviews = () => {
 
         // Filter reviews based on selected genre
         if (selectedGenre !== 'all') {
-            sortedReviews = sortedReviews.filter(review => review.genre.toLowerCase() === selectedGenre.toLowerCase());
+            sortedReviews = allReviews.filter(review => review.genre.toLowerCase() === selectedGenre.toLowerCase());
         }
 
         //rating and year sorting..................
         const fetchSortedReviews = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/reviews?sortBy=${sortBy}`);
+                const response = await fetch(`https://assignment-10-server-gamma-mocha.vercel.app/reviews?sortBy=${sortBy}`);
                 const sortReviews = await response.json();
-                setReviews(sortReviews);
+                if (selectedGenre !== 'all') {
+                    sortedReviews = sortReviews.filter(review => review.genre.toLowerCase() === selectedGenre.toLowerCase());
+                    setReviews(sortedReviews);
+                }
+                else {
+                    setReviews(sortReviews);
+                }
             } catch (error) {
-                console.error('Error fetching sorted reviews:', error);
+                alert(error);
             }
         };
 
         if (sortBy) {
             fetchSortedReviews();
         } else {
-            setReviews(allReviews); 
+            setReviews(sortedReviews); 
         }
-      
+     
     }, [ sortBy,allReviews,selectedGenre]);
 
     const genres = [...new Set(allReviews.map(review => review.genre))];

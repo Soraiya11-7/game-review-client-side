@@ -36,9 +36,9 @@ const UpdateReview = () => {
 
         const newReview = { gameTitle, rating, publishingYear, genre, details, coverImage, reviewerEmail, reviewerName, userLogo };
 
-        console.log(newReview);
+        // console.log(newReview);
 
-        fetch(`http://localhost:5000/reviews/${_id}`, {
+        fetch(`https://assignment-10-server-gamma-mocha.vercel.app/reviews/${_id}`, {
             method:"PUT",
             headers: {
                 'content-type': 'application/json'

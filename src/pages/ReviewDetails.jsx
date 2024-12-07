@@ -35,9 +35,9 @@ const ReviewDetails = () => {
     const handleAddToWatchList = () => {
         const newWatchList = { gameTitle, rating, publishingYear, genre, details, coverImage, reviewerEmail, reviewerName, email,name };
 
-        console.log(newWatchList);
+       
 
-        fetch("http://localhost:5000/watchlist", {
+        fetch("https://assignment-10-server-gamma-mocha.vercel.app/watchlist", {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

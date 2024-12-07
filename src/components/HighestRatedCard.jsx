@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './Card';
 
 const HighestRatedCard = ({reviews, setReviews}) => {
-    console.log(reviews);
+    
     return (
         <div>
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-center">Highest Rated Games</h2>

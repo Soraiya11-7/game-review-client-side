@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         {
           path: "/",
           element: <Home></Home>,
-          loader: () => fetch("http://localhost:5000/reviews/rated"),
+          loader: () => fetch("https://assignment-10-server-gamma-mocha.vercel.app/reviews/rated"),
           
         },
         {
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         {
           path: "/reviews",
           element: <AllReviews></AllReviews>,
-          loader: () => fetch("http://localhost:5000/reviews"),
+          loader: () => fetch("https://assignment-10-server-gamma-mocha.vercel.app/reviews"),
         },
         {
           path: "/myReviews",
@@ -44,12 +44,12 @@ const router = createBrowserRouter([
         {
           path: "/review/:id",
           element: <SecretRoutes><ReviewDetails></ReviewDetails></SecretRoutes> ,
-          loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`),
+          loader: ({params}) => fetch(`https://assignment-10-server-gamma-mocha.vercel.app/review/${params.id}`),
         },
         {
           path: "/updateReview/:id",
           element: <SecretRoutes><UpdateReview></UpdateReview></SecretRoutes> ,
-          loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`),
+          loader: ({params}) => fetch(`https://assignment-10-server-gamma-mocha.vercel.app/review/${params.id}`),
         },
         {
           path: "/myWatchlist",

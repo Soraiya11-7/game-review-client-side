@@ -14,7 +14,6 @@ const Login = () => {
     const [error, setError] = useState("");
     const location = useLocation();
     const from = location.state;
-    console.log(from);
 
     //Login with email, password
     const handleLogin = (e) => {
@@ -31,7 +30,7 @@ const Login = () => {
 
                 const loginInfo = {email, lastSignInTime};
 
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://assignment-10-server-gamma-mocha.vercel.app/users`, {
                     method:"PATCH",
                     headers: {
                         'content-type': 'application/json'

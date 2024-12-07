@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 
 const AddReview = () => {
     const { user, setLoading } = useContext(AuthProviderContext);
+    const navigate = useNavigate();
 
     const [reviewerEmail, setReviewerEmail] = useState(user?.email || '');
     const [reviewerName, setReviewerName] = useState(user?.displayName || '');
@@ -33,9 +34,7 @@ const AddReview = () => {
 
         const newReview = { gameTitle, rating, publishingYear, genre, details, coverImage, reviewerEmail, reviewerName, userLogo };
 
-        console.log(newReview);
-
-        fetch("http://localhost:5000/reviews", {
+        fetch("https://assignment-10-server-gamma-mocha.vercel.app/reviews", {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -44,7 +43,7 @@ const AddReview = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
+                
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -52,6 +51,7 @@ const AddReview = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
+                    navigate('/myReviews');
                 }
             })
 

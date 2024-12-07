@@ -1,4 +1,3 @@
-
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthProviderContext } from '../Provider/AuthProvider';
@@ -40,7 +39,6 @@ const Registration = () => {
         createUser(email, password)
             .then((res) => {
                 // console.log(result.user);
-                console.log(image);
                 updateUserProfile({ displayName: name, photoURL: image })
                     .then(() => {
                         setUser({
@@ -51,12 +49,12 @@ const Registration = () => {
                         const createdAt = res?.user?.metadata?.creationTime;
 
                         //save new user to the DB
-                        const newUser = {name, email, image, createdAt};
-                       
+                        const newUser = { name, email, image, createdAt };
+
                         // console.log(newUser);
                         // data send to server
 
-                        fetch("http://localhost:5000/users", {
+                        fetch("https://assignment-10-server-gamma-mocha.vercel.app/users", {
                             method: "POST",
                             headers: {
                                 'content-type': 'application/json'
@@ -77,14 +75,20 @@ const Registration = () => {
                             })
 
 
-                            navigate('/addReview');
+                        navigate('/addReview');
                     })
                     .catch((err) => {
-
                         const errorMessage = err.message;
                         const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
-                        setError(errorCode || 'Unknown error');
-                    })
+                        setError(errorCode);
+                        Swal.fire({
+                            title: 'Failed!',
+                            text: `${error}`,
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        })
+                        // setError(err.message);
+                    });
                 e.target.reset();
 
 
@@ -93,6 +97,13 @@ const Registration = () => {
                 const errorMessage = err.message;
                 const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
                 setError(errorCode);
+                Swal.fire({
+                    title: 'Failed!',
+                    text: `${error}`,
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
+                // setError(err.message);
             });
     }
 
@@ -106,9 +117,15 @@ const Registration = () => {
                 const errorMessage = err.message;
                 const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
                 setError(errorCode);
+                Swal.fire({
+                    title: 'Failed!',
+                    text: `${error}`,
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
+                // setError(err.message);
             });
     }
-
 
 
     return (
@@ -156,11 +173,11 @@ const Registration = () => {
 
 
                     </div>
-                    {
+                    {/* {
                         error && <label className="label text-xs text-red-600">
                             {error}
                         </label>
-                    }
+                    } */}
                     <div className="form-control mt-6">
                         <button className="p-2 rounded-xl  bg-teal-600 text-white text-base sm:text-lg font-bold">Register</button>
                     </div>

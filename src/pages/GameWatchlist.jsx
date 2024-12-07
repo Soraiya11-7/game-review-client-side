@@ -9,10 +9,10 @@ const GameWatchlist = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/watchList/${user.email}`)
+      fetch(`https://assignment-10-server-gamma-mocha.vercel.app/watchList/${user.email}`)
         .then((res) => res.json())
         .then((data) => setWatchList(data))
-        .catch((error) => console.error("Error fetching watchList:", error));
+        .catch((error) => alert(error));
     }
   }, [user]);
 
@@ -27,7 +27,7 @@ const GameWatchlist = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-          fetch(`http://localhost:5000/watchList/${_id}`,{
+          fetch(`https://assignment-10-server-gamma-mocha.vercel.app/watchList/${_id}`,{
               method: 'DELETE'
           })
           .then(res => res.json())
