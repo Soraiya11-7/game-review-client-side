@@ -3,7 +3,7 @@ import React from 'react';
 function ExtraTwo() {
  
   return (
-    <div className="py-16 my-10 bg-gradient-to-br from-purple-500 via-indigo-300 to-lime-900 text-white">
+    <div className="py-16 my-10 bg-gradient-to-br from-purple-500 via-indigo-300 to-lime-900 text-white dark:text-white dark:bg-gray-700 ">
       <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-center mb-16 text-white">
         Gaming Milestones
       </h2>

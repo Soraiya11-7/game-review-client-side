@@ -5,7 +5,7 @@ import events from "../assets/events.png"
 import tournament from "../assets/gaming-tournaments.jpg"
 const ExtraOne = () => {
     return (
-        <div className="py-10 bg-indigo-50 my-10">
+        <div className="py-10 bg-indigo-50 dark:bg-gray-700 my-10">
             <div className=" mx-auto text-center py-10 px-6">
 
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3">Join the Community</h2>

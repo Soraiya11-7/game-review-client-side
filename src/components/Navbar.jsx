@@ -1,19 +1,50 @@
 import { Link, NavLink, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 // import { RiCoupon3Fill } from "react-icons/ri";
 import logo from "../assets/gamer.jpg"
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthProviderContext } from "../Provider/AuthProvider";
 import { Tooltip } from "react-tooltip";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 
 const Navbar = () => {
-    const { user, signOutUser } = useContext(AuthProviderContext);
-   
+    const { user, signOutUser,darkMode,setDarkMode } = useContext(AuthProviderContext);
+
     const location = useLocation();
     const [showTooltip, setShowTooltip] = useState(false);
     // const location = useLoaderData();
     const navigate = useNavigate();
+    const [theme, setTheme] = useState('light');
 
+    useEffect(() => {
+        if (theme === 'dark') {
+            setDarkMode(true);
+            document.documentElement.classList.add('dark');
+        } else {
+            setDarkMode(false);
+            document.documentElement.classList.remove('dark');
+        }
+
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light');
+    };
+
+
+    // Check if the current route is the home page
+    const isHomePage = location.pathname === "/";
+
+    // Navbar background classes
+    const navbarClass = isHomePage
+        ? darkMode
+            ? "bg-gray-900 text-white"
+            : "bg-gray-300 "
+        : "bg-gray-300 ";
+
+   
+
+    
     const links = <>
 
         <li><NavLink to='/'
@@ -81,7 +112,7 @@ const Navbar = () => {
             })
     }
     return (
-        <div className="navbar bg-gray-300 w-[80%] mx-auto p-2 md:p-4 ">
+        <div className={`navbar ${navbarClass} bg-gray-300 w-[80%] mx-auto p-2 md:p-4`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 mr-1 lg:hidden">
@@ -105,6 +136,20 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="avatar w-14 h-10 md:w-20 md:h-14"><img className="w-full h-full overflow-hidden rounded-xl object-cover" src={logo} alt="" /></div>
+
+                <div className="">
+                <button
+                    onClick={toggleTheme}
+                    className="flex items-center ml-1 bg-white  p-1 rounded-full shadow-lg bg-gray-white dark:bg-gray-800 border-2 dark:border-white border-purple-800 transition-all duration-300"
+                >
+                    {theme === 'light' ? (
+                        <FaMoon className="text-yellow-500 text-xl" />
+                    ) : (
+                        <FaSun className="text-orange-400 text-xl" />
+                    )}
+                   
+                </button>
+            </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 -space-x-1">

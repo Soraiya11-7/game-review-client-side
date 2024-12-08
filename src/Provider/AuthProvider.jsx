@@ -11,6 +11,7 @@ const AuthProvider = ({children}) => {
 
 const [user,setUser] = useState(null);
 const [loading, setLoading] = useState(true);
+const [darkMode, setDarkMode] = useState(false);
 
 const  name = 'Chill Gamer';
 //create new user
@@ -54,6 +55,8 @@ useEffect(() =>{
 
 const authInfo = {
     name,
+    darkMode, 
+    setDarkMode,
     user,
     loading,
     setLoading,
