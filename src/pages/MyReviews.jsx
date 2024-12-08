@@ -72,7 +72,7 @@ const MyReviews = () => {
             </thead>
             <tbody>
               {myReviews.map((review, index) => (
-                <tr key={review._id} className="text-center bg-purple-100">
+                <tr key={review._id} className="text-center bg-gray-200">
                   <td className="border border-purple-500  py-2 text-xs sm:text-sm md:text-base  ">{index + 1}</td>
                   <td className="border border-purple-500  py-2 text-xs sm:text-sm md:text-base ">{review.gameTitle}</td>
                   <td className="border border-purple-500  py-2 text-xs sm:text-sm md:text-base  ">{review.genre} </td>
@@ -88,7 +88,7 @@ const MyReviews = () => {
                       </button>
                       <button
                         onClick={() => navigate(`/updateReview/${review._id}`)}
-                        className="text-center text-orange-950 rounded-full "
+                        className="text-center text-purple-950 rounded-full "
                       >
                         <FaEdit className="text-lg" />
                       </button>

@@ -18,7 +18,7 @@ const Home = () => {
     }, [sixRatedReviews]);
 
     return (
-        <div className='w-[80%] mx-auto bg-white dark:shadow-xl dark:shadow-black dark:bg-gray-900  text-black dark:text-white'>
+        <div className='w-[80%] mx-auto bg-gray-50 dark:shadow-xl dark:shadow-black dark:bg-gray-900  text-black dark:text-white'>
             <Banner></Banner>
             <HighestRatedCard key={reviews._id} reviews={reviews} setReviews={setReviews}></HighestRatedCard>
             <ExtraTwo></ExtraTwo>

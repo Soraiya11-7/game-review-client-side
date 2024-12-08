@@ -39,8 +39,8 @@ const Navbar = () => {
     const navbarClass = isHomePage
         ? darkMode
             ? "bg-gray-900 text-white"
-            : "bg-gray-300 "
-        : "bg-gray-300 ";
+            : "bg-purple-500 "
+        : "bg-purple-500";
 
    
 
@@ -49,10 +49,10 @@ const Navbar = () => {
 
         <li><NavLink to='/'
             className={({ isActive }) =>
-                `flex items-center gap-x-1  ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
+                `flex items-center gap-x-1  ${isActive ? 'text-lime-400 font-bold' : 'text-white '}`
             }>Home</NavLink></li>
         <li><NavLink className={({ isActive }) =>
-            `flex items-center gap-x-0.5  ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
+            `flex items-center gap-x-0.5  ${isActive ? 'text-lime-400 font-bold' : 'text-white'}`
         } to='/reviews'>All Reviews</NavLink></li>
 
         {
@@ -60,7 +60,7 @@ const Navbar = () => {
                 <li>
                     <NavLink
                         className={({ isActive }) =>
-                            `flex items-center ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
+                            `flex items-center ${isActive ? 'text-lime-400 font-bold' : 'text-white'}`
                         }
                         to='/addReview'
                     >
@@ -72,7 +72,7 @@ const Navbar = () => {
                     <li>
                         <NavLink
                             className={({ isActive }) =>
-                                `flex items-center  text-[#0B0B0BB3] bg-transparent`
+                                `flex items-center  text-white bg-transparent`
                             }
 
                             state={'/addReview'}
@@ -87,14 +87,14 @@ const Navbar = () => {
         {
             user && <>
                 <li> <NavLink className={({ isActive }) =>
-                    `flex items-center gap-0 ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
+                    `flex items-center gap-0 ${isActive ? 'text-lime-400 font-bold' : 'text-white'}`
                 } to='/myReviews'>My Reviews</NavLink></li>
             </>
         }
         {
             user && <>
                 <li> <NavLink className={({ isActive }) =>
-                    `flex items-center gap-0 ${isActive ? 'text-teal-800 font-bold' : 'text-[#0B0B0BB3]'}`
+                    `flex items-center gap-0 ${isActive ? 'text-lime-400 font-bold' : 'text-white'}`
                 } to='/myWatchlist'> Game WatchList</NavLink></li>
             </>
         }
@@ -112,10 +112,10 @@ const Navbar = () => {
             })
     }
     return (
-        <div className={`navbar ${navbarClass} bg-gray-300 w-[80%] mx-auto p-2 md:p-4`}>
+        <div className={`navbar ${navbarClass} bg-purple-500 w-[80%] mx-auto p-2 md:p-4`}>
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 mr-1 lg:hidden">
+                    <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 ml-1 lg:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -167,13 +167,13 @@ const Navbar = () => {
                                     <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={user?.photoURL}
                                         alt="Avatar image"
                                     />
-                                    <Tooltip anchorSelect="#click" clickable>
+                                    <Tooltip className="z-10" anchorSelect="#click" clickable>
                                         <button> {user?.displayName}</button>
                                     </Tooltip>
 
                                 </div>
                                 {/* {showTooltip && (
-                                    <div className="absolute mr-4 top-16 text-sm text-teal-800 bg-white p-2 rounded-lg border ">
+                                    <div className="absolute mr-4 top-16 text-sm text-lime-400 bg-white p-2 rounded-lg border ">
                                         {user?.displayName}
                                     </div>
                                 )} */}
@@ -181,16 +181,16 @@ const Navbar = () => {
                             </div>
                             :
 
-                            (<Link to='/auth/login' className="bg-teal-500 text-white md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl">Login</Link>)
+                            (<Link to='/auth/login' className="bg-white text-black md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl">Login</Link>)
                     }
 
                 </div>
                 <div>
                     {
                         user && user?.email ?
-                            (<button onClick={handleLogOut} className="bg-teal-500 text-white md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl ">LogOut</button>)
+                            (<button onClick={handleLogOut} className="bg-white text-black md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl ">LogOut</button>)
                             :
-                            (<Link to='/auth/register' className=" bg-teal-500 text-white md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl ">Register</Link>)
+                            (<Link to='/auth/register' className=" bg-white text-black md:px-3 md:py-3 px-2 py-2 font-medium md:font-bold text-sm md:text-base rounded-xl ">Register</Link>)
                     }
                 </div>
 

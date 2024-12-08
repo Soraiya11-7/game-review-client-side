@@ -9,7 +9,7 @@ import { Typewriter } from "react-simple-typewriter";
 const Banner = () => {
     const { user } = useContext(AuthProviderContext);
     return (
-        <div className="mb-10" >
+        <div className="mb-12" >
 
             <div className="carousel  rounded-b-lg w-full h-[220px] sm:h-[300px] md:h-[410px]" data-aos="fade-up ">
 

@@ -8,7 +8,7 @@ const Card = ({ review}) => {
     
     return (
         <div className="w-full mx-auto flex justify-center items-center ">
-            <div className="shadow-xl w-full h-full rounded-lg bg-white overflow-hidden">
+            <div className="shadow-xl w-full h-full rounded-lg bg-white overflow-hidden ">
                 {/* Header.................... */}
                 <div className="bg-purple-400 pt-4 text-center w-full">
                     <div  className="h-52 w-[90%] mx-auto shadow-xl rounded-t-lg ">
@@ -17,11 +17,11 @@ const Card = ({ review}) => {
                     </div>
                 </div>
 
-                <div className=" bg-white   py-4 text-center w-full">
+                <div className=" bg-white  pb-4 text-center w-full">
                     {/* Card Content...................... */}
-                    <div className="relative bg-white p-4 w-[90%] text-center mx-auto shadow-xl rounded-b-lg min-h-[300px] flex flex-col flex-grow dark:bg-gray-500  ">
+                    <div className="relative bg-white p-4 w-[90%] text-center mx-auto shadow-xl rounded-b-lg min-h-[300px] flex flex-col flex-grow   ">
                         {/* Profile Image................ */}
-                        <div className="absolute -top-20 left-1/2 transform -translate-x-1/2">
+                        <div className="absolute -top-14 left-1/2 transform -translate-x-1/2">
                             <div className="avatar">
                                 <div className="w-24 rounded-full ring ring-purple-500 border-none outline-none ring-offset-2">
                                     <img
@@ -33,7 +33,7 @@ const Card = ({ review}) => {
                         </div>
 
             
-                        <div className="mt-1 flex flex-col flex-grow min-h-[80px]  ">
+                        <div className="mt-8 flex flex-col flex-grow min-h-[80px]  ">
                             <p className="text-sm font-semibold text-gray-800 mb-3 ">{reviewerName}</p>
                             <p className="text-gray-600 italic text-sm  min-h-[50px] flex-grow ">
                                 <span>"{details}"</span>

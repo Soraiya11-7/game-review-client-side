@@ -154,7 +154,7 @@ const UpdateReview = () => {
                 </div>
 
 
-                <input type="submit" value="Update" className="btn btn-block bg-orange-800 text-white font-bold hover:bg-orange-700 border-none" />
+                <input type="submit" value="Update" className="btn btn-block bg-purple-500 text-white font-bold  border-none" />
             </form>
 
         </div>
