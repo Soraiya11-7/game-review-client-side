@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 // import { Typewriter, useTypewriter } from 'react-simple-typewriter';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import ExtraOne from '../components/ExtraOne';
+import ExtraTwo from '../components/ExtraTwo';
 
 const Home = () => {
     const sixRatedReviews = useLoaderData();
@@ -57,7 +58,9 @@ const Home = () => {
             </div>
 
             <HighestRatedCard key={reviews._id} reviews={reviews} setReviews={setReviews}></HighestRatedCard>
+            <ExtraTwo></ExtraTwo>
             {
+                
                 <ExtraOne></ExtraOne>
             }
         </div>
