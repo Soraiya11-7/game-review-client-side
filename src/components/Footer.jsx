@@ -10,7 +10,7 @@ const Footer = () => {
           {/* About Section */}
           <div className="text-center md:text-left">
             <h2 className="text-xl font-semibold mb-4">Chill Gamer</h2>
-            <p className="text-gray-400 mx-auto border text-sm sm:text-base border-red-50 w-full sm:w-[60%] md:w-[95%] md:mx-0">
+            <p className="text-gray-400 mx-auto text-sm sm:text-base w-full sm:w-[60%] md:w-[95%] md:mx-0">
               Chill Gamer is a user-friendly game review platform where gamers can explore and share reviews, discover new games, and interact with fellow gaming enthusiasts. 
             </p>
           </div>

@@ -3,7 +3,13 @@
 Chill Gamer is a user-friendly platform for exploring and sharing game reviews. It provides an intuitive and engaging experience for gamers to review, rate, and discover games effortlessly. 
 
 ## Live Site URL
-[Visit Chill Gamer](#)
+
+Netlify: [Chill Gamer Live](https://fluffy-rabanadas-4c83a2.netlify.app/)
+
+Firebase: [Live Link 1](https://assignment-10-17fea.web.app/) OR 
+          [Live Link 2](https://assignment-10-17fea.firebaseapp.com/)
+
+Vercel: [Live Link](https://assignment-10-server-gamma-mocha.vercel.app/)
 
 ## Features
 - **Dynamic Review System**: 
