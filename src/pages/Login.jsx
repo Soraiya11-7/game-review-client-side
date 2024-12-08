@@ -73,6 +73,14 @@ const Login = () => {
     const handleLoginWithGoogle = () => {
         signInWithGoogle()
             .then(() => {
+
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Login Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+        
                 navigate(location?.state ? location.state : '/');
             })
             .catch((err) => {
