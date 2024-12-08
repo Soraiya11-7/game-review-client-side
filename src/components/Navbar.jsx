@@ -112,7 +112,7 @@ const Navbar = () => {
             })
     }
     return (
-        <div className={`navbar ${navbarClass} bg-purple-500 w-[80%] mx-auto p-2 md:p-4`}>
+        <div className={`navbar ${navbarClass}  w-[80%] mx-auto p-2 md:p-4`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 ml-1 lg:hidden">
