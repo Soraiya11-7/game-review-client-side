@@ -47,14 +47,14 @@ const ReviewDetails = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
-                if (data.insertedId) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Review added on watchList Successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    })
-                }
+                // if (data.insertedId) {
+                //     Swal.fire({
+                //         title: 'Success!',
+                //         text: 'Review added on watchList Successfully',
+                //         icon: 'success',
+                //         confirmButtonText: 'Cool'
+                //     })
+                // }
             })
     };
 
