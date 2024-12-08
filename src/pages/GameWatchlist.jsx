@@ -12,7 +12,7 @@ const GameWatchlist = () => {
       fetch(`https://assignment-10-server-gamma-mocha.vercel.app/watchList/${user.email}`)
         .then((res) => res.json())
         .then((data) => setWatchList(data))
-        .catch((error) => alert(error));
+        // .catch((error) => alert(error));
     }
   }, [user]);
 

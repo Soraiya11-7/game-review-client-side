@@ -30,7 +30,7 @@ const AllReviews = () => {
                     setReviews(sortReviews);
                 }
             } catch (error) {
-                alert(error);
+                // alert(error);
             }
         };
 
@@ -84,8 +84,8 @@ const AllReviews = () => {
                 {
                     reviews.length === 0 ? (
                         <div className="text-center">
-                          <h3 className="text-xl text-gray-500">No review found.</h3>
-                          <p>Add New Review .</p>
+                          <h3 className="text-xl text-gray-500">No Reviews Found.</h3>
+                          <p>Add New Review.</p>
                         </div>
                       ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
