@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         },
         {
           path: "/review/:id",
-          element: <SecretRoutes><ReviewDetails></ReviewDetails></SecretRoutes> ,
+          element: <ReviewDetails></ReviewDetails>,
           loader: ({params}) => fetch(`https://assignment-10-server-gamma-mocha.vercel.app/review/${params.id}`),
         },
         {

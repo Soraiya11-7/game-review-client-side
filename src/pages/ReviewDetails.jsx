@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthProviderContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const ReviewDetails = () => {
+    const navigate = useNavigate();
     const review = useLoaderData();
     const {user} = useContext(AuthProviderContext)
     const {
+        _id,
         gameTitle,
         rating,
         publishingYear,
@@ -30,12 +32,16 @@ const ReviewDetails = () => {
             setUserEmail(user.email);
             setUserName(user.displayName);
         }
-    }, [user]);
-
-    const handleAddToWatchList = () => {
-        const newWatchList = { gameTitle, rating, publishingYear, genre, details, coverImage, reviewerEmail, reviewerName, email,name };
-
        
+    }, [user]);
+   
+    const handleAddToWatchList = () => {
+        if(!user) {
+            navigate('/auth/login', { state: `/review/${_id}` });
+
+        }
+        else{
+            const newWatchList = { gameTitle, rating, publishingYear, genre, details, coverImage, reviewerEmail, reviewerName, email,name };
 
         fetch("https://assignment-10-server-gamma-mocha.vercel.app/watchlist", {
             method: "POST",
@@ -56,6 +62,7 @@ const ReviewDetails = () => {
                 //     })
                 // }
             })
+        }
     };
 
     return (
@@ -123,7 +130,7 @@ const ReviewDetails = () => {
                         {/* Add to WatchList Button */}
                         <div className="flex justify-center ">
                             <button
-                                onClick={handleAddToWatchList}
+                                onClick={() =>handleAddToWatchList()}
                                 className="bg-gradient-to-r from-purple-500 to-blue-500 text-white  text-xs sm:text-sm md:text-base font-bold py-2 px-6 rounded-lg shadow-md hover:from-blue-500 hover:to-green-400 transition-all duration-300"
                             >
                                 Add to WatchList
