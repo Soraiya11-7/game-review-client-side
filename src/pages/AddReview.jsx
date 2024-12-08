@@ -90,7 +90,7 @@ const AddReview = () => {
                         <label className="label">
                             <span className="label-text">Genre</span>
                         </label>
-                        <select name='genre' className="select select-bordered w-full text-xs sm:text-base">
+                        <select name='genre' className="select select-bordered w-full text-xs sm:text-base" required>
                             <option value="">Select Genre</option>
                             <option value="Action">Action</option>
                             <option value="RPG">RPG</option>

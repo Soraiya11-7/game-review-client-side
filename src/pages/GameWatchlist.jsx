@@ -49,7 +49,7 @@ const GameWatchlist = () => {
 
   return (
     <div className="w-[80%] mx-auto py-10">
-      <h2 className="text-3xl font-bold text-center mb-6">My watchList</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6">My watchList</h2>
       {watchList.length === 0 ? (
         <div className="text-center">
           <h3 className="text-xl text-gray-500">Your watchList is empty.</h3>

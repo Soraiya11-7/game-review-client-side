@@ -4,6 +4,8 @@ import { AuthProviderContext } from '../Provider/AuthProvider';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from 'react-icons/fc';
 import Swal from 'sweetalert2';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 
 const Registration = () => {
@@ -21,15 +23,27 @@ const Registration = () => {
         const image = e.target.image.value;
         setError("");
         if (password.length < 6) {
-            setError("password must contain at least 6 character")
+            // setError("password must contain at least 6 character")
+            toast.error("password must contain at least 6 character", {
+                position: "top-center",
+                autoClose: 2000,
+              });
             return;
         }
         if (!/[a-z]/.test(password)) {
-            setError("password must contain at least one  Lowercase letter");
+            // setError("password must contain at least one  Lowercase letter");
+            toast.error("password must contain at least one  Lowercase letter", {
+                position: "top-center",
+                autoClose: 2000,
+              });
             return;
         }
         if (!/[A-Z]/.test(password)) {
-            setError("password must contain at least one  Uppercase letter");
+            // setError("password must contain at least one  Uppercase letter");
+            toast.error("password must contain at least one  Uppercase letter", {
+                position: "top-center",
+                autoClose: 2000,
+              });
             return;
         }
 
@@ -80,14 +94,12 @@ const Registration = () => {
                     .catch((err) => {
                         const errorMessage = err.message;
                         const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
-                        setError(errorCode);
-                        Swal.fire({
-                            title: 'Failed!',
-                            text: `${error}`,
-                            icon: 'error',
-                            confirmButtonText: 'Cool'
-                        })
-                        // setError(err.message);
+                        // setError(errorCode);
+                        toast.error(errorCode || "An unexpected error occurred", {
+                            position: "top-center",
+                            autoClose: 2000,
+                          });
+                        
                     });
                 e.target.reset();
 
@@ -96,14 +108,12 @@ const Registration = () => {
             .catch((err) => {
                 const errorMessage = err.message;
                 const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
-                setError(errorCode);
-                Swal.fire({
-                    title: 'Failed!',
-                    text: `${error}`,
-                    icon: 'error',
-                    confirmButtonText: 'Cool'
-                })
-                // setError(err.message);
+                // setError(errorCode);
+                toast.error(errorCode || "An unexpected error occurred", {
+                    position: "top-center",
+                    autoClose: 2000,
+                  });
+              
             });
     }
 
@@ -117,12 +127,16 @@ const Registration = () => {
                 const errorMessage = err.message;
                 const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
                 setError(errorCode);
-                Swal.fire({
-                    title: 'Failed!',
-                    text: `${error}`,
-                    icon: 'error',
-                    confirmButtonText: 'Cool'
-                })
+                toast.error(`"${error}"`, {
+                    position: "top-center",
+                    autoClose: 2000,
+                  });
+                // Swal.fire({
+                //     title: 'Failed!',
+                //     text: `${error}`,
+                //     icon: 'error',
+                //     confirmButtonText: 'Cool'
+                // })
                 // setError(err.message);
             });
     }
@@ -179,7 +193,7 @@ const Registration = () => {
                         </label>
                     } */}
                     <div className="form-control mt-6">
-                        <button className="p-2 rounded-xl  bg-teal-600 text-white text-base sm:text-lg font-bold">Register</button>
+                        <button className="p-2 rounded-xl  bg-purple-500 text-white text-base sm:text-lg font-bold">Register</button>
                     </div>
                 </form>
                 <div className="flex items-center mb-4 w-[80%] mx-auto">
@@ -189,8 +203,9 @@ const Registration = () => {
                 </div>
 
                 <div className='flex justify-center items-center mb-3'>
-                    <button onClick={handleLoginWithGoogle} className='p-1 sm:p-2 flex items-center gap-1 rounded-xl border v hover:border-teal-600'><FcGoogle className='text-base sm:text-lg'></FcGoogle> Login with Google</button>
+                    <button onClick={handleLoginWithGoogle} className='p-1 sm:p-2 flex items-center gap-1 rounded-xl border hover:border-purple-500'><FcGoogle className='text-base sm:text-lg'></FcGoogle> Login with Google</button>
                 </div>
+                <ToastContainer />
 
                 <h2 className='mb-3 text-center'>You have an account? <Link className='text-blue-400' to='/auth/login'>Login Now</Link></h2>
             </div>

@@ -68,10 +68,10 @@ const ReviewDetails = () => {
                 </div>
 
                 {/* Review Card */}
-                <div className="w-full sm:w-[70%] md:w-[60%] lg:w-[45%] mx-auto bg-white rounded-lg shadow-lg overflow-hidden ">
+                <div className="w-full sm:w-[70%] md:w-[60%] lg:w-[50%] mx-auto bg-white rounded-lg shadow-lg overflow-hidden ">
 
-                    <div className="h-[250px] sm:h-[300px] md:h-[400px] w-full mx-auto shadow-xl rounded-t-lg mb-4 p-4">
-                        <img src={coverImage} className="h-full w-full object-cover overflow-hidden rounded-lg " alt="coverImage" />
+                    <div className="h-[250px] sm:h-[300px] md:h-[400px] w-full mx-auto border  rounded-lg mb-4 p-4">
+                        <img src={coverImage} className="h-full w-full object-cover border overflow-hidden rounded-lg " alt="coverImage" />
 
                     </div>
 
@@ -100,11 +100,13 @@ const ReviewDetails = () => {
 
                         {/* Reviewer Info */}
                         <div className="flex items-center gap-2 mb-3 mt-2">
+                            <div className='w-8 md:w-12 h-8 md:h-12 rounded-full border'>
                             <img
                                 src={userLogo}
                                 alt="User Avatar"
-                                className="w-8 md:w-12 h-8 md:h-12 rounded-full border "
+                                className="w-full h-full rounded-full border object-cover overflow-hidden "
                             />
+                            </div>
                             <div className='text-left'>
                                 <p className="font-semibold text-sm md:text-lg">{reviewerName}</p>
                                 <p className="text-gray-600 text-xs md:text-base">{reviewerEmail}</p>

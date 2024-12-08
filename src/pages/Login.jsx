@@ -4,6 +4,8 @@ import { AuthProviderContext } from '../Provider/AuthProvider';
 
 import { FcGoogle } from 'react-icons/fc';
 import Swal from 'sweetalert2';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -40,14 +42,14 @@ const Login = () => {
                    .then(res => res.json())
                    .then(data => {
                     // console.log(data);
-                    // if(data.modifiedCount > 0){
-                    //     Swal.fire({
-                    //         title: 'Success!',
-                    //         text: 'Coffee Updated Successfully',
-                    //         icon: 'success',
-                    //         confirmButtonText: 'Cool'
-                    //       })
-                    // }
+                   
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Login Successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Cool'
+                          })
+                
                    })
 
                 
@@ -57,13 +59,11 @@ const Login = () => {
             .catch((err) => {
                 const errorMessage = err.message;
                 const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
-                setError(errorCode);
-                Swal.fire({
-                    title: 'Failed!',
-                    text: `${error}`,
-                    icon: 'error',
-                    confirmButtonText: 'Cool'
-                  })
+                // setError(errorCode);
+                toast.error(errorCode || "An unexpected error occurred", {
+                    position: "top-center",
+                    autoClose: 2000,
+                  });
                 // setError(err.message);
             });
 
@@ -79,13 +79,11 @@ const Login = () => {
                 // setError({ ...error, login: err.code })
                 const errorMessage = err.message;
                 const errorCode = errorMessage.match(/\(([^)]+)\)/)?.[1];
-                setError(errorCode );
-                Swal.fire({
-                    title: 'Failed!',
-                    text: `${error}`,
-                    icon: 'error',
-                    confirmButtonText: 'Cool'
-                  })
+                // setError(errorCode );
+                toast.error(errorCode || "An unexpected error occurred", {
+                    position: "top-center",
+                    autoClose: 2000,
+                  });
 
             });
     }
@@ -116,7 +114,7 @@ const Login = () => {
 
                     </div>
                     <div className="form-control mt-6">
-                        <button className="p-2 rounded-xl  bg-teal-600 text-white text-base sm:text-lg font-bold">Login</button>
+                        <button className="p-2 rounded-xl  bg-purple-500 text-white text-base sm:text-lg font-bold">Login</button>
                     </div>
                 </form>
                 <div className="flex items-center mb-4 w-[80%] mx-auto">
@@ -125,8 +123,9 @@ const Login = () => {
                     <div className="flex-grow border-t-2 border-black"></div>
                 </div>
                 <div className='flex justify-center items-center mb-3'>
-                    <button onClick={handleLoginWithGoogle} className='p-1 sm:p-2 flex items-center gap-1 rounded-xl border text-base sm:text-lg hover:border-teal-600'><FcGoogle className='text-base sm:text-lg'></FcGoogle> Login with Google</button>
+                    <button onClick={handleLoginWithGoogle} className='p-1 sm:p-2 flex items-center gap-1 rounded-xl border text-base sm:text-lg hover:border-purple-500'><FcGoogle className='text-base sm:text-lg'></FcGoogle> Login with Google</button>
                 </div>
+                <ToastContainer />
                 <h2 className='text-sm sm:text-base text-center mb-3'>New to this website? <Link to='/auth/register' className='text-blue-500'>Create an account</Link></h2>
             </div>
         </div>

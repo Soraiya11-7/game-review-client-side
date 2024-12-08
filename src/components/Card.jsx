@@ -27,20 +27,21 @@ const Card = ({ review}) => {
                                     <img
                                         src={review?.userLogo}
                                         alt="User Profile"
+                                        className="object-cover overflow-hidden w-full h-full"
                                     />
                                 </div>
                             </div>
                         </div>
 
             
-                        <div className="mt-8 flex flex-col flex-grow min-h-[80px]  ">
+                        <div className="mt-8 flex flex-col flex-grow min-h-[280px]  ">
                             <p className="text-sm font-semibold text-gray-800 mb-3 ">{reviewerName}</p>
                             <p className="text-gray-600 italic text-sm  min-h-[50px] flex-grow ">
                                 <span>"{details}"</span>
                             </p>
 
-                            <div className=" px-4 text-center border-t border-gray-300  mt-4 flex flex-col min-h-[50px] flex-grow ">
-                                <h3 className="text-lg font-semibold flex-grow ">{gameTitle}</h3>
+                            <div className=" px-4 text-center border-t border-gray-300  mt-4 min-h-[70px] flex-grow ">
+                                <h3 className="text-base md:text-lg font-semibold  min-h-[30px] flex-grow ">{gameTitle}</h3>
                                 <p className="text-sm text-gray-500 uppercase ">{genre}</p>
                                 <h2 className="text-sm text-gray-500 uppercase "> <span>{publishingYear} </span></h2>
                                 {/* Star Ratings............... */}

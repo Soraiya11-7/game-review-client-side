@@ -56,7 +56,7 @@ const AllReviews = () => {
                         <select
                             onChange={(e) => setSortBy(e.target.value)}
                             value={sortBy}
-                            className="px-4 py-2 border border-purple-700  rounded-md"
+                            className="p-1 sm:px-4 sm:py-2 text-xs sm:text-base border border-purple-700  rounded-md"
                         >
                             <option value="">Sort Reviews</option>
                             <option value="rating">Rating: Ascending</option>
@@ -68,7 +68,7 @@ const AllReviews = () => {
                         <select
                             onChange={(e) => setSelectedGenre(e.target.value)}
                             value={selectedGenre}
-                            className="px-4 py-2 border border-purple-700 rounded-md"
+                            className="p-1 sm:px-4 sm:py-2 border text-xs sm:text-base border-purple-700 rounded-md"
                         >
                             <option value="all">All Genres</option>
                             {genres.map((genre) => (
@@ -79,14 +79,24 @@ const AllReviews = () => {
                         </select>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                
+                {
+                    reviews.length === 0 ? (
+                        <div className="text-center">
+                          <h3 className="text-xl text-gray-500">No review found.</h3>
+                          <p>Add New Review .</p>
+                        </div>
+                      ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {
                         reviews.map((review) => (
                             <Card key={review._id}
                                 review={review} ></Card>)
                         )
                     }
-                </div>
+                </div>)
+                }
             </div>
         </div>
     );

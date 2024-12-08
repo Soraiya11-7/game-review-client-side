@@ -63,9 +63,9 @@ const UpdateReview = () => {
 
     };
     return (
-        <div className=" py-12 w-[80%] mx-auto">
+        <div className=" py-6 sm:py-12 w-[80%] mx-auto">
              <button onClick={() => navigate('/myReviews')} className='text-left bg-purple-700 rounded-xl p-2 text-white'>&larr;Back</button>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3">Update a Review</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mt-4 sm:mt-0 mb-3">Update a Review</h2>
             <h3 className='text-sm sm:text-lg  text-center mb-10'> Update detailed reviews for your favorite games effortlessly</h3>
             <form onSubmit={handleSubmit} className='bg-slate-300 py-10 px-6 shadow-lg rounded-xl' >
                 {/* form name and Game Cover Image/Thumbnail */}
@@ -95,7 +95,7 @@ const UpdateReview = () => {
                         <label className="label">
                             <span className="label-text">Genre</span>
                         </label>
-                        <select name='genre' className="select select-bordered w-full text-xs sm:text-base" defaultValue={genre}>
+                        <select name='genre' className="select select-bordered w-full text-xs sm:text-base" required defaultValue={genre}>
                             <option value="">Select Genre</option>
                             <option value="Action">Action</option>
                             <option value="RPG">RPG</option>

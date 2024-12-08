@@ -131,21 +131,21 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow ">
+                        className="menu menu-sm dropdown-content bg-black rounded-box z-[1] mt-3 w-52 p-2 shadow ">
                         {links}
                     </ul>
                 </div>
-                <div className="avatar w-14 h-10 md:w-20 md:h-14"><img className="w-full h-full overflow-hidden rounded-xl object-cover" src={logo} alt="" /></div>
+                <div className="avatar w-12 h-8 md:w-20 md:h-14"><img className="w-full h-full overflow-hidden rounded-xl object-cover" src={logo} alt="" /></div>
 
                 <div className="">
                 <button
                     onClick={toggleTheme}
-                    className="flex items-center ml-1 bg-white  p-1 rounded-full shadow-lg bg-gray-white dark:bg-gray-800 border-2 dark:border-white border-purple-800 transition-all duration-300"
+                    className="flex items-center ml-0 sm:ml-1 bg-white  p-1 rounded-full shadow-lg bg-gray-white dark:bg-gray-800 border-2 dark:border-white border-purple-800 transition-all duration-300"
                 >
                     {theme === 'light' ? (
-                        <FaMoon className="text-yellow-500 text-xl" />
+                        <FaMoon className="text-yellow-500 text-base" />
                     ) : (
-                        <FaSun className="text-orange-400 text-xl" />
+                        <FaSun className="text-orange-400 text-base" />
                     )}
                    
                 </button>

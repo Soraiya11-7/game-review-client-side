@@ -34,9 +34,9 @@ const Banner = () => {
                         <p className="mt-3 text-white text-sm  md:text-lg w-[60%] md:w-full mx-auto">Explore our features and discover endless possibilities</p>
                     </div>
 
-                    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                        <a href="#slide4" className="btn btn-circle">❮</a>
-                        <a href="#slide3" className="btn btn-circle">❯</a>
+                    <div className="absolute sm:left-5 sm:right-5 left-1 right-1 top-1/2 flex -translate-y-1/2 transform justify-between">
+                        <a href="#slide4" className="sm:btn sm:btn-circle text-lime-300 font-bold text-2xl">❮</a>
+                        <a href="#slide3" className="sm:btn sm:btn-circle text-lime-300 font-bold text-2xl">❯</a>
                     </div>
                 </div>
                 <div id="slide3" className="carousel-item relative w-full">
@@ -58,9 +58,9 @@ const Banner = () => {
                         </h2>
                         <p className="mt-3 text-white text-sm  md:text-lg w-[60%] md:w-full mx-auto">We help you stay on track and reach your dreams.</p>
                     </div>
-                    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                        <a href="#slide2" className="btn btn-circle">❮</a>
-                        <a href="#slide4" className="btn btn-circle">❯</a>
+                    <div className="absolute sm:left-5 sm:right-5 left-1 right-1 top-1/2 flex -translate-y-1/2 transform justify-between">
+                        <a href="#slide2" className="sm:btn sm:btn-circle text-lime-300 font-bold text-2xl ">❮</a>
+                        <a href="#slide4" className="sm:btn sm:btn-circle text-lime-300 font-bold text-2xl">❯</a>
                     </div>
                 </div>
                 <div id="slide4" className="carousel-item relative w-full">
@@ -82,9 +82,9 @@ const Banner = () => {
                         </h2>
                         <p className="mt-3 text-white text-sm  md:text-lg w-[60%] md:w-full mx-auto">Connect, grow, and thrive with us.</p>
                     </div> 
-                    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                        <a href="#slide3" className="btn btn-circle">❮</a>
-                        <a href="#slide2" className="btn btn-circle">❯</a>
+                    <div className="absolute sm:left-5 sm:right-5 left-1 right-1 top-1/2 flex -translate-y-1/2 transform justify-between">
+                        <a href="#slide3" className="sm:btn sm:btn-circle text-lime-300 font-bold text-2xl">❮</a>
+                        <a href="#slide2" className="sm:btn sm:btn-circle text-lime-300 font-bold text-2xl">❯</a>
                     </div>
                 </div>
             </div>
