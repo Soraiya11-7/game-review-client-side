@@ -1,5 +1,7 @@
 # Chill Gamer: A Game Review Application
 
+![Banner Image](./public/chillgamer.PNG)
+
 ## 📊  Project Overview
 
 **Chill Gamer** is a user-friendly game review platform designed for users to explore, submit, and manage game reviews. The application focuses on simplicity, responsiveness, and functionality, offering key features such as user authentication, review submission, rating, and game watchlist management. Its purpose is to provide a space for users to share gaming experiences, interact with fellow gamers, and easily manage their personal game collections with an intuitive, clean UI.
