@@ -38,7 +38,7 @@ const Navbar = () => {
     // Navbar background classes
     const navbarClass = isHomePage
         ? darkMode
-            ? "bg-gray-900 text-white"
+            ? "bg-black text-white"
             : "bg-purple-500 "
         : "bg-purple-500";
 
@@ -112,10 +112,11 @@ const Navbar = () => {
             })
     }
     return (
-        <div className={`navbar ${navbarClass}  w-[80%] mx-auto p-2 md:p-4`}>
-            <div className="navbar-start">
+        <div className={`navbar ${navbarClass} navbar w-full py-2 md:py-4 sticky top-0 z-50`}>
+            <div className="container w-[91%] mx-auto">
+            <div className="navbar-start flex items-center gap-2">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 ml-1 lg:hidden">
+                    <div tabIndex={0} role="button" className="btn btn-ghost p-0 sm:p-2 lg:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -162,7 +163,7 @@ const Navbar = () => {
                     {
                         user ?
                             <div className="flex items-center">
-                                <div className="h-10 w-12 md:h-12 md:w-14 rounded-full px-1 relative" id='click' onMouseEnter={() => setShowTooltip(true)}
+                                <div className="h-10 w-12 md:h-12 md:w-14 rounded-full  px-1 relative" id='click' onMouseEnter={() => setShowTooltip(true)}
                                     onMouseLeave={() => setShowTooltip(false)}>
                                     <img className=" h-full w-full  rounded-full object-cover overflow-hidden" src={user?.photoURL}
                                         alt="Avatar image"
@@ -195,6 +196,8 @@ const Navbar = () => {
                 </div>
 
             </div>
+            </div>
+           
 
         </div>
     );

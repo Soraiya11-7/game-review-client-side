@@ -11,7 +11,7 @@ const Banner = () => {
     return (
         <div className="mb-12" >
 
-            <div className="carousel  rounded-b-lg w-full h-[220px] sm:h-[300px] md:h-[410px]" data-aos="fade-up ">
+            <div className="carousel  rounded-b-lg w-full h-[220px] sm:h-[300px] md:h-[480px]" data-aos="fade-up ">
 
                 <div id="slide2" className="carousel-item relative w-full">
                     <img

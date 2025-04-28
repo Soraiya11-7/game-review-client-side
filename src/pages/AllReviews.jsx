@@ -46,9 +46,9 @@ const AllReviews = () => {
 
     
     return (
-        <div className='w-[80%] mx-auto'>
-            <div className="py-10  bg-gray-50">
-                <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center mb-14">All Reviews</h2>
+        <div className='w-full dark:bg-gray-950'>
+            <div className="py-10 container  w-[90%] mx-auto  ">
+                <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-center dark:text-white mb-14">All Reviews</h2>
 
                      {/* Dropdown for Sorting */}
                      <div className="flex justify-between mb-12">

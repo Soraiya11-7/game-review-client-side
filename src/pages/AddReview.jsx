@@ -59,9 +59,10 @@ const AddReview = () => {
     };
 
     return (
-        <div className=" py-12 w-[80%] mx-auto">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3">Add a New Review</h2>
-            <h3 className='text-sm sm:text-lg  text-center mb-10'> Submit detailed reviews for your favorite games effortlessly</h3>
+        <div className=" py-12 w-full">
+            <div className='container w-[90%] mx-auto'>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3 dark:text-white">Add a New Review</h2>
+            <h3 className='text-sm sm:text-lg  text-center mb-10 dark:text-white'> Submit detailed reviews for your favorite games effortlessly</h3>
             <form onSubmit={handleSubmit} className='bg-slate-300 py-10 px-6 shadow-lg rounded-xl' >
                 {/* form name and Game Cover Image/Thumbnail */}
                 <div className=" md:flex mb-4 md:mb-8">
@@ -151,6 +152,8 @@ const AddReview = () => {
 
                 <input type="submit" value="Submit Review" className="btn btn-block bg-purple-500 text-white font-bold border-none" />
             </form>
+            </div>
+         
 
         </div>
     );

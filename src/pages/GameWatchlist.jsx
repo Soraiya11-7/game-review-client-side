@@ -48,12 +48,13 @@ const GameWatchlist = () => {
   };
 
   return (
-    <div className="w-[80%] mx-auto py-10">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6">My watchList</h2>
+    <div className="w-full dark:bg-gray-950  py-10">
+      <div className="container w-[90%] mx-auto">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 dark:text-white">My watchList</h2>
       {watchList.length === 0 ? (
         <div className="text-center">
-          <h3 className="text-xl text-gray-500">Your watchList is empty.</h3>
-          <p>Add games to your watchList from the Review Details page.</p>
+          <h3 className="text-xl text-gray-500 dark:text-300">Your watchList is empty.</h3>
+          <p className="dark:text-gray-400">Add games to your watchList from the Review Details page.</p>
         </div>
       ) : (
         <div className="overflow-x-auto">
@@ -106,6 +107,8 @@ const GameWatchlist = () => {
           </table>
         </div>
       )}
+      </div>
+    
     </div>
   );
 };

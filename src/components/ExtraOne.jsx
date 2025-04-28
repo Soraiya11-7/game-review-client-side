@@ -6,7 +6,7 @@ import tournament from "../assets/gaming-tournaments.jpg"
 import { Link } from "react-router-dom";
 const ExtraOne = () => {
     return (
-        <div className="py-10 bg-purple-400 dark:bg-gray-700 mt-10 rounded-t-lg">
+        <div className="py-10 bg-purple-400 dark:bg-gray-900 w-[90%] mx-auto mt-10 rounded-t-lg">
             <div className=" mx-auto text-center py-10 px-6">
 
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3">Join the Community</h2>

@@ -66,8 +66,8 @@ const ReviewDetails = () => {
     };
 
     return (
-        <div className='w-[80%] mx-auto'>
-            <div className=" bg-gradient-to-tr from-purple-500 via-indigo-300 to-lime-900 py-10">
+        <div className='w-full bg-gradient-to-tr from-purple-500 via-indigo-300 to-lime-700 dark:bg-none dark:bg-gray-950 py-10'>
+            <div className="container w-[90%] mx-auto  ">
                 {/* Page Title */}
                 <div className="text-center text-white mb-12">
                     <h1 className="text-2xl md:text-4xl font-bold">Review Details</h1>

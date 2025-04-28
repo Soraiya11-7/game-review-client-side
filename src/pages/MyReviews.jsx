@@ -51,12 +51,13 @@ const MyReviews = () => {
   };
 
   return (
-    <div className="w-[80%] mx-auto py-10">
-      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6">My Review List</h2>
+    <div className="w-full py-10">
+      <div className="container w-[90%] mx-auto">
+      <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 dark:text-white">My Review List</h2>
       {myReviews.length === 0 ? (
         <div className="text-center">
-          <h3 className="text-xl text-gray-500">Your Review is empty.</h3>
-          <p>Add review from the Add Review  page.</p>
+          <h3 className="text-xl text-gray-500 dark:text-gray-300">Your Review is empty.</h3>
+          <p className="dark:text-gray-400">Add review from the Add Review  page.</p>
         </div>
       ) : (
         <div className="overflow-x-auto">
@@ -100,6 +101,8 @@ const MyReviews = () => {
           </table>
         </div>
       )}
+      </div>
+    
     </div>
   );
 };

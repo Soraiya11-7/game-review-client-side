@@ -99,7 +99,7 @@ const Login = () => {
    
     return (
 
-        <div className="flex justify-center py-8 items-center ">
+        <div className="flex justify-center py-8 items-center dark:bg-gray-950 ">
             <div className="card bg-base-100  w-[90%] sm:w-[60%] md:w-[50%] lg:w-[35%] mx-auto shadow-2xl p-1 sm:p-2">
                 <h1 className="text-xl sm:text-3xl font-bold text-center mt-3">Login now!</h1>
                 <form onSubmit={handleLogin} className="card-body">

@@ -3,8 +3,8 @@ import React from 'react';
 function ExtraTwo() {
  
   return (
-    <div className="py-20 my-10 bg-gradient-to-br from-purple-500 via-indigo-300 to-lime-900 text-white dark:text-white dark:bg-gray-700 rounded-xl ">
-      <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-center mb-20 text-white">
+    <div className="py-20 w-[90%] mx-auto my-10  dark:text-white dark:bg-gray-700 rounded-xl ">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-center mb-20 dark:text-white">
         Gaming Milestones
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-3 md:px-6 ">
